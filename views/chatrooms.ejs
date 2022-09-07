@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Chatroom 1</h1>
+    </header>
+
+    <section class="content-section">
+        <section class="chat-section">
+            <% messages.forEach( el => { %>
+                <div data-id='<%=el._doc._id%>'>
+                    <div class="favorite-color <%= el.profilePicture %>">
+                        
+                    </div>
+                    <span class="author">
+                        <%= el.authorName %>
+                    </span>
+                    <span class="date">
+                        <%= el._doc.date %>
+                    </span>
+                    <span class="del">X</span>
+                    <p class="message-content">
+                        <%= el._doc.content %>
+                    </p>
+                </div>
+            <% }) %> 
+        </section>
+        <br>
+        <section class="form-section">
+            <form action="/chatrooms/createMessage" method='POST'>
+                <textarea type="text" placeholder="Enter Message" name='messageContent' rows="5" cols="33"></textarea>
+                <button type="submit" class="right">Send</button>
+            </form>
+        </section>
+    </section>
+
+
+    <a href="/logout" class="clear">Logout</a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
