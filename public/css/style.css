@@ -9,14 +9,25 @@
     text-decoration: underline;
 } */
 
+body{
+    margin: 0 0;
+    background: linear-gradient(rgb(187, 187, 187), #9198e5);
+    height: 100vh;
+}
 
 *{
     font-size: 1.2rem;
 }
 
 header{
-    height: 200px;
-    background-color: rgb(187, 187, 187);
+    height: 120px;
+    /* background-color: rgb(187, 187, 187); */
+}
+
+header div {
+    width: 50vw;
+    margin: 0 auto;
+    padding-top: 40px;
 }
 
 .content-section{
@@ -53,7 +64,7 @@ header{
 }
 
 .chat-section{
-    max-height: 80vh;
+    max-height: 73vh;
     overflow: auto;
 }
 

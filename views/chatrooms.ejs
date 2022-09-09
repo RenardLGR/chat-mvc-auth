@@ -9,25 +9,29 @@
 </head>
 <body>
     <header>
-        <h1>Chatroom 1</h1>
+        <div>
+            <h1>Chatroom 1</h1>
+            <a href="/logout" class="clear">Logout</a>
+        </div>
     </header>
 
     <section class="content-section">
         <section class="chat-section">
             <% messages.forEach( el => { %>
-                <div data-id='<%=el._doc._id%>'>
-                    <div class="favorite-color <%= el.profilePicture %>">
-                        
+                <div data-id='<%=el._id%>'>
+                    <div class="favorite-color <%= el.authorProfilePic %>">
                     </div>
                     <span class="author">
-                        <%= el.authorName %>
+                        <%= el.authorDisplayName %>
                     </span>
                     <span class="date">
-                        <%= el._doc.date %>
+                        <%= el.date %>
                     </span>
-                    <span class="del">X</span>
+                    <% if(user.id === el.userId) { %>
+                        <span class="del">X</span>
+                    <% } %>
                     <p class="message-content">
-                        <%= el._doc.content %>
+                        <%= el.content %>
                     </p>
                 </div>
             <% }) %> 
@@ -35,14 +39,12 @@
         <br>
         <section class="form-section">
             <form action="/chatrooms/createMessage" method='POST'>
-                <textarea type="text" placeholder="Enter Message" name='messageContent' rows="5" cols="33"></textarea>
+                <textarea type="text" placeholder="Enter Message" name='messageContent' rows="4" cols="70"></textarea>
                 <button type="submit" class="right">Send</button>
             </form>
         </section>
     </section>
 
-
-    <a href="/logout" class="clear">Logout</a>
 
     <script src="js/main.js"></script>
 </body>
